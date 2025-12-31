@@ -1,3 +1,25 @@
+// Dynamic Time-Based Greeting
+function setDynamicGreeting() {
+    const greetingElement = document.getElementById('dynamic-greeting');
+    if (!greetingElement) return;
+
+    const hour = new Date().getHours();
+    let greeting;
+
+    if (hour >= 5 && hour < 12) {
+        greeting = 'Good Morning';
+    } else if (hour >= 12 && hour < 17) {
+        greeting = 'Good Afternoon';
+    } else {
+        greeting = 'Good Evening';
+    }
+
+    greetingElement.textContent = greeting;
+}
+
+// Set greeting on page load
+setDynamicGreeting();
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');

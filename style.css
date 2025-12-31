@@ -2022,6 +2022,10 @@ details[open] .accordion-icon {
         padding-top: 2rem;
     }
 
+    .hero-content {
+        margin-bottom: 2rem;
+    }
+
     .hero-container .hero-image {
         order: -1;
         /* Image on top */
@@ -2034,10 +2038,18 @@ details[open] .accordion-icon {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+        width: 100%;
+        padding: 0 1rem;
     }
 
+    .btn-primary,
     .btn-secondary {
-        margin-left: 0;
+        width: 100%;
+        max-width: 280px;
+        margin: 0;
+        padding: 1rem 1.5rem;
+        text-align: center;
+        font-size: 0.95rem;
     }
 
     .social-links {
@@ -2190,7 +2202,14 @@ details[open] .accordion-icon {
 
     .hero-container {
         padding-top: 9rem !important;
-        /* Increased to prevent overlap */
+        padding-bottom: 3rem !important;
+        /* Ensure buttons don't get cut off */
+        min-height: auto;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-bottom: 2rem;
     }
 
     /* Fix Back to Top overlap */
