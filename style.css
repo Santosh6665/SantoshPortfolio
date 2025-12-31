@@ -12,7 +12,7 @@
     --glass-border: rgba(255, 255, 255, 0.05);
     --card-hover: rgba(14, 165, 233, 0.03);
     --max-width: 1240px;
-    --nav-height: 80px;
+    --nav-height: 60px;
     --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     --section-spacing: 120px;
 }
@@ -102,8 +102,9 @@ body::-webkit-scrollbar {
             rgba(255, 255, 255, 0.2),
             transparent);
     transform: skewX(-25deg);
-    transition: 0.7s;
+    transition: transform 0.7s ease;
     pointer-events: none;
+    will-change: transform;
 }
 
 .project-card:hover::before,
@@ -111,7 +112,7 @@ body::-webkit-scrollbar {
 .edu-badge:hover::before,
 .skill-item:hover::before,
 .do-item:hover::before {
-    left: 150%;
+    transform: translateX(300%) skewX(-25deg);
 }
 
 /* Scroll Progress Bar */
@@ -2031,6 +2032,8 @@ details[open] .accordion-icon {
         /* Image on top */
         display: flex;
         justify-content: center;
+        margin-top: 2rem;
+        /* Gap between navbar and profile image */
     }
 
     .hero-btns {
@@ -2047,12 +2050,26 @@ details[open] .accordion-icon {
         width: 100%;
         max-width: 280px;
         margin: 0;
-        padding: 1rem 1.5rem;
+        padding: 1.2rem 1.5rem;
         text-align: center;
-        font-size: 0.95rem;
+        font-size: 1rem;
+        min-height: 48px;
+        /* Ensure 48x48px touch target */
     }
 
     .social-links {
+        justify-content: center;
+        gap: 2rem;
+        /* Increase spacing for better touch targets */
+    }
+
+    .social-links a {
+        font-size: 1.8rem;
+        /* Larger icons for mobile */
+        min-width: 48px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
         justify-content: center;
     }
 
@@ -2063,12 +2080,33 @@ details[open] .accordion-icon {
 
 @media (max-width: 768px) {
     .title {
-        font-size: 2.5rem;
-        /* Scale down from 4rem */
+        font-size: 2.2rem;
+        /* Improved readability */
+        line-height: 1.2;
+        margin-bottom: 1.2rem;
+    }
+
+    .role {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
     }
 
     .section-title {
         font-size: 2rem;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+    }
+
+    .section {
+        padding: 60px 0;
+        /* Reduced from 120px for mobile */
     }
 
     .about-content {
@@ -2078,6 +2116,14 @@ details[open] .accordion-icon {
     .what-i-do {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 1.5rem;
+        /* Better spacing on mobile */
+    }
+
+    .do-item {
+        min-width: 120px;
+        padding: 1.5rem 1rem;
+        /* Better touch targets */
     }
 
     .nexus-grid {
@@ -2102,6 +2148,26 @@ details[open] .accordion-icon {
 
     footer {
         padding: 3rem 0 1.5rem;
+    }
+
+    /* Mobile Form Optimization */
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 16px;
+        /* Prevent zoom on iOS */
+        padding: 1rem;
+        min-height: 48px;
+    }
+
+    .contact-form textarea {
+        min-height: 120px;
+    }
+
+    .contact-form .btn-primary {
+        width: 100%;
+        padding: 1.2rem;
+        font-size: 1.1rem;
+        min-height: 56px;
     }
 
     .footer-container {

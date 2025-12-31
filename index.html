@@ -7,7 +7,12 @@
     <title>Santosh Chaudhary | Full-Stack Developer</title>
     <meta name="description"
         content="Portfolio of Santosh Chaudhary, a Computer Science Engineering undergraduate and Full-Stack Developer specializing in React, Node.js, and Modern Web Technologies.">
-    <!-- Google Fonts -->
+
+    <!-- Performance: Resource Hints -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- Google Fonts with font-display swap for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
@@ -75,7 +80,8 @@
             <div class="hero-image fade-in-up delay-200">
                 <!-- Abstract or Placeholder Image -->
                 <div class="blob-container">
-                    <img src="profile.png" alt="Santosh Chaudhary" class="profile-img">
+                    <img src="profile.png" alt="Santosh Chaudhary" class="profile-img" loading="lazy" width="350"
+                        height="350">
                     <div class="blob"></div>
                 </div>
             </div>
@@ -665,7 +671,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
