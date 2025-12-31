@@ -47,10 +47,58 @@ const observerOptions = {
     rootMargin: "0px 0px -50px 0px"
 };
 
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+function scrambleText(element) {
+    let iteration = 0;
+    let interval = null;
+    const targetValue = element.dataset.value;
+
+    clearInterval(interval);
+
+    interval = setInterval(() => {
+        element.innerText = element.innerText
+            .split("")
+            .map((letter, index) => {
+                if (index < iteration) {
+                    return targetValue[index];
+                }
+                return letters[Math.floor(Math.random() * 26)];
+            })
+            .join("");
+
+        if (iteration >= targetValue.length) {
+            clearInterval(interval);
+        }
+
+        iteration += 1 / 3;
+    }, 30);
+}
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+
+            // Hacker Scramble Effect
+            const title = entry.target.querySelector('.section-title');
+            if (title && title.dataset.value) {
+                scrambleText(title);
+            }
+
+            // Snappy Staggered Entrance for inner elements
+            const cards = entry.target.querySelectorAll('.project-card, .skill-item, .stat-box, .edu-badge, .do-item');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08}s`;
+
+                requestAnimationFrame(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+
             observer.unobserve(entry.target);
         }
     });
