@@ -479,7 +479,7 @@ window.addEventListener('click', (e) => {
 // Menu Item Handlers
 document.getElementById('menu-resume').addEventListener('click', () => {
     const link = document.createElement('a');
-    link.href = 'SSantoshTech2026.pdf';
+    link.href = 'SantoshTech2026.pdf';
     link.download = 'SantoshTech2026.pdf';
     link.click();
     contextMenu.style.display = 'none';
@@ -502,4 +502,3 @@ document.getElementById('menu-refresh').addEventListener('click', () => {
     if (typeof addLog === 'function') addLog('Refreshing system...');
     setTimeout(() => location.reload(), 500);
 });
-
